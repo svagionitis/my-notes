@@ -4,4 +4,4 @@
 
 The directory tree is produced by the following
 
-    tree -hH . > directory-tree.html
+    tree -ahH . -I .git > directory-tree.html
