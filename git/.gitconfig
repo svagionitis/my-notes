@@ -1,0 +1,66 @@
+# Reference https://github.com/durdn/cfg/blob/master/.gitconfig
+[color]
+	ui = auto
+[color "branch"]
+	current = red reverse
+	local = blue
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[user]
+	name = Stavros Vagionitis
+	email = stavros.vagionitis@gmail.com
+[core]
+	excludesfile = /home/stavros/.gitignore_global
+	editor = vim
+[diff]
+	tool = meld
+[difftool "meld"]
+	cmd = meld "$LOCAL" "$REMOTE"
+[alias]
+	# List commits in short form, with colors and branch/tag annotations.
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	# List commits showing changed files
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	# List with no colors
+	lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+	# List oneline commits showing dates
+	lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+	# List oneline commits showing relative dates
+	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+	# Default look for short git log
+	le = log --oneline --decorate
+
+	# A better git log
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	# A better git log without colors
+	lgn = log --graph --pretty=format:'%h - %d %s (%cr) <%an>' --abbrev-commit --date=relative
+	# Git lg With all the branches
+	lgg = "!f() { git lg --all ; }; f"
+	lgg2 = log --graph --all --format=format:'%C(red)%h%C(reset) - %C(bold cyan)%cD%C(reset) %C(green)(%cr)%C(reset)%C(yellow)%d%C(reset)%n''          %C(reset)%s%C(reset) %C(bold blue)— %cn%C(reset)' --abbrev-commit
+	# Diff without space change
+	dfw = diff --ignore-space-change
+	dt = difftool -y
+
+	# All the commits related to a file, with the diff of the changes
+	filelog = log -u
+	fl = log -u
+
+	co = checkout
+
+	ci = commit
+	cm = commit -m
+	cma = commit -a -m
+
+	cl = clone
+
+	br = branch
+	bra = branch -ra
+
