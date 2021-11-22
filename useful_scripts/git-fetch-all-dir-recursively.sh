@@ -18,6 +18,6 @@ GIT_REPOS_DIR=$(find "${INPUT_DIR}" -type d -execdir test -d {}/.git \; -prune -
 for dir in ${GIT_REPOS_DIR}; do
     cd "${dir}"
     echo "Updating git repo in ${dir}"
-    git fetch --all
+    timeout 1m git fetch --all
     cd -
 done
